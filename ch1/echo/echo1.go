@@ -4,14 +4,12 @@ package main
 import (
 	"fmt"
 	"os"
+	"time"
+	"strings"
 )
 
 func main() {
-	var s, sep string
-	for _, arg := range os.Args[1:] {
-		s += sep + arg
-		sep = " "
-	}
-
-	fmt.Println(s)
+	t1 := time.Now()
+	fmt.Println(strings.Join(os.Args[1:], " "))
+	fmt.Println(time.Now().Sub(t1))
 }

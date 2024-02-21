@@ -4,11 +4,12 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 )
 
 type blork struct {
-	count    int
-	filename string
+	count     int
+	filenames []string
 }
 
 func main() {
@@ -31,7 +32,7 @@ func main() {
 
 	for line, n := range counts {
 		if n.count > 1 {
-			fmt.Printf("%d\t%s\t%s\n", n.count, n.filename, line)
+			fmt.Printf("%d\t%s\t%s\n", n.count, strings.Join(n.filenames, ", "), line)
 		}
 	}
 }
@@ -39,9 +40,20 @@ func main() {
 func countLines(f *os.File, counts map[string]blork) {
 	input := bufio.NewScanner(f)
 	for input.Scan() {
-		var tmp = counts[input.Text()]
+		tmp := counts[input.Text()]
 		tmp.count++
-		tmp.filename = f.Name()
+		if !contains(tmp.filenames, f.Name()) {
+			tmp.filenames = append(tmp.filenames, f.Name())
+		}
 		counts[input.Text()] = tmp
 	}
+}
+
+func contains(filenames []string, filename string) bool {
+	for _, blah := range filenames {
+		if blah == filename {
+			return true
+		}
+	}
+	return false
 }

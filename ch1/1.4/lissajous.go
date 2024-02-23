@@ -10,7 +10,7 @@ import (
 	"os"
 )
 
-var palette = []color.Color{color.White, color.Black}
+var palette = []color.Color{color.Black, color.RGBA{0x4C, 0xBB, 0x17, 0xff}}
 
 const (
 	whiteIndex = 0 // first color in palette

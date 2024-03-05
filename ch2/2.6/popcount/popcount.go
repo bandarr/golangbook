@@ -14,7 +14,7 @@ func PopCount(x uint64) int {
 
 	var blarg int
 
-	for i := 0; i < 64; i++ {
+	for i := 0; i < 8; i++ {
 		blarg += int(pc[byte(x>>(i*8))])
 		fmt.Println(blarg)
 	}

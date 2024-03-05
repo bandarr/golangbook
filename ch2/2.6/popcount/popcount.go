@@ -1,5 +1,7 @@
 package popcount
 
+import "fmt"
+
 var pc [256]byte
 
 func init() {
@@ -14,6 +16,7 @@ func PopCount(x uint64) int {
 
 	for i := 0; i < 64; i++ {
 		blarg += int(pc[byte(x>>(i*8))])
+		fmt.Println(blarg)
 	}
 
 	return blarg

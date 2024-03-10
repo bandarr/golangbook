@@ -22,4 +22,20 @@ func main() {
 
 	fmt.Printf("%08b\n", x<<1) //"01000100", the set {2,6}
 	fmt.Printf("%08b\n", x>>1) //"00010001", the set {0,4}
+
+	o := 0666
+	fmt.Printf("%d  %[1]o   %#[1]o\n", o)
+
+	yerp := int64(0xdeadbeef)
+	fmt.Printf("%d  %[1]x %#[1]x  %#[1]X\n", yerp)
+
+	ascii := 'a'
+	unicode := 'כ'
+
+	newline := '\n'
+
+	fmt.Printf("%d  %[1]c  %[1]q\n", ascii)
+	fmt.Printf("%d  %[1]c  %[1]q\n", unicode)
+	fmt.Printf("%d  %[1]q\n", newline)
+
 }
